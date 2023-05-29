@@ -1,12 +1,22 @@
 import { ScrollView, StyleSheet } from "react-native";
 import { LIST } from "../../global";
 import { Item } from "./Item";
+import { useContext, useMemo } from "react";
+import { Context } from "../../App";
 export function ScrollConteiner() {
+	const { category } = useContext(Context);
+	const SCROLLDATA = useMemo(() => {
+		let newList = LIST.filter((item) => {
+			return item.category == category.toString();
+		});
+		if (!newList) return [];
+		return newList;
+	}, [category]);
 	return (
 		<ScrollView
 			contentContainerStyle={styles.scrollViewContent}
 			horizontal={true}>
-			{LIST.map((data) => {
+			{SCROLLDATA.map((data) => {
 				return (
 					<Item key={data.id} describe={data.describe} url={data.url}></Item>
 				);

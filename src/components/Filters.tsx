@@ -3,7 +3,11 @@ import { COLORS, STYLES } from "../../global";
 import { Film, BedDouble, VenetianMask } from "@tamagui/lucide-icons";
 import { H5 } from "tamagui";
 import { FiltersButton } from "./FilterButton";
+import { useContext } from "react";
+import { Context } from "../../App";
+import { TouchableOpacity } from "react-native";
 export function Filters() {
+	const { setCategory } = useContext(Context);
 	return (
 		<YStack
 			h={150}
@@ -18,14 +22,21 @@ export function Filters() {
 			<H5 color={"white"}>Filters</H5>
 			<XStack w={"100%"} jc={"space-between"}>
 				<FiltersButton describe='Movies'>
-					<Film size={50} color='white' />
+					<TouchableOpacity onPress={() => setCategory("Movie")}>
+						<Film size={50} color='white' />
+					</TouchableOpacity>
 				</FiltersButton>
+
 				<FiltersButton describe='Series'>
-					<BedDouble size={50} color='white' />
+					<TouchableOpacity onPress={() => setCategory("Serie")}>
+						<BedDouble size={50} color='white' />
+					</TouchableOpacity>
 				</FiltersButton>
 
 				<FiltersButton describe='Animes'>
-					<VenetianMask size={50} color='white' />
+					<TouchableOpacity onPress={() => setCategory("Anime")}>
+						<VenetianMask size={50} color='white' />
+					</TouchableOpacity>
 				</FiltersButton>
 			</XStack>
 		</YStack>
