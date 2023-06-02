@@ -4,8 +4,8 @@ import { Film, BedDouble, VenetianMask } from "@tamagui/lucide-icons";
 import { H5 } from "tamagui";
 import { FiltersButton } from "./FilterButton";
 import { useContext } from "react";
-import { Context } from "../../App";
 import { TouchableOpacity } from "react-native";
+import { Context } from "../context/ManagerContext";
 export function Filters() {
 	const { setCategory } = useContext(Context);
 	return (

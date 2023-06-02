@@ -1,22 +1,10 @@
 import { useFonts } from "expo-font";
-import { useColorScheme } from "react-native";
-import { TamaguiProvider, Theme } from "tamagui";
+import { TamaguiProvider } from "tamagui";
 import config from "./tamagui.config";
 import { Routes } from "./src/routes/Routes";
-import { createContext, useState } from "react";
-interface ctxProps {
-	category: "Movie" | "Anime" | "Serie";
-	setCategory: React.Dispatch<
-		React.SetStateAction<"Movie" | "Anime" | "Serie">
-	>;
-}
-export const Context = createContext({} as ctxProps);
+import { ManagerContext } from "./src/context/ManagerContext";
 
 export default function App() {
-	const colorScheme = useColorScheme();
-	const [category, setCategory] = useState<"Movie" | "Anime" | "Serie">(
-		"Movie",
-	);
 	const [loaded] = useFonts({
 		Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
 
@@ -26,10 +14,10 @@ export default function App() {
 		return null;
 	}
 	return (
-		<Context.Provider value={{ category, setCategory }}>
+		<ManagerContext>
 			<TamaguiProvider config={config}>
 				<Routes />
 			</TamaguiProvider>
-		</Context.Provider>
+		</ManagerContext>
 	);
 }

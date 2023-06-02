@@ -2,7 +2,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import { LIST } from "../../global";
 import { Item } from "./Item";
 import { useContext, useMemo } from "react";
-import { Context } from "../../App";
+import { Context } from "../context/ManagerContext";
 export function ScrollConteiner() {
 	const { category } = useContext(Context);
 	const SCROLLDATA = useMemo(() => {

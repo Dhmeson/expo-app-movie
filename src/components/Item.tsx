@@ -7,8 +7,6 @@ interface props {
 	describe: string;
 }
 export function Item({ describe, url }: props) {
-	const { navigate } = useNavigation();
-
 	return (
 		<YStack w={250}>
 			<TouchableOpacity>
